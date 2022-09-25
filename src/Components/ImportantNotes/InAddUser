@@ -1,0 +1,75 @@
+import React, { useState, useRef } from 'react';//use ref pnly used inside the components..and the which value is picked..
+
+
+/*const [enteredUsername, setEnteredUsername] = useState('');//use state always returned the array with exactly two elements..and stored in separated constant with entered and set names...
+  const [enteredAge, setEnteredAge] = useState('');*/
+
+  if (enteredName.trim().length === 0 || enteredUserAge.trim().length === 0) {
+    setError({
+      title: 'Invalid input',
+      message: 'Please enter a valid name and age (non-empty values).',
+    });
+    return;
+  }
+  if (+enteredUserAge < 1) {
+    setError({
+      title: 'Invalid age',
+      message: 'Please enter a valid age (> 0).',
+    });
+    return;
+  }//this if else for validations of age 
+
+  
+/**
+ * (event.target.value);//event.target use used to get the user  entered values in browser input and .values get the cureent valued entered
+ * this is for wraping of another form in react...
+ *  return [
+        
+          error && (
+            <ErrorModal
+              key="error-modal"
+              title={error.title}
+              message={error.message}
+              onConfirm={errorHandler}
+            />
+          ),
+          <Card key="add-user-card"className={classes.input}>
+            <form onSubmit={addUserHandler}>
+              <label htmlFor="username">Username</label>
+              <input
+                id="username"
+                type="text"
+                value={enteredUsername}
+                onChange={usernameChangeHandler}
+              />
+              <label htmlFor="age">Age (Years)</label>
+              <input
+                id="age"
+                type="number"
+                value={enteredAge}
+                onChange={ageChangeHandler}
+              />
+              <Button type="submit">Add User</Button>
+            </form>
+          </Card>
+        
+      ]; */
+
+      <Wrapper>
+      {error && (
+        <ErrorModal
+          title={error.title}
+          message={error.message}
+          onConfirm={errorHandler}
+        />
+      )}
+      <Card className={classes.input}>
+        <form onSubmit={addUserHandler}>
+          <label htmlFor="username">Username</label>
+          <input id="username" type="text" ref={nameInputRef} />
+          <label htmlFor="age">Age (Years)</label>
+          <input id="age" type="number" ref={ageInputRef} />
+          <Button type="submit">Add User</Button>
+        </form>
+      </Card>
+    </Wrapper>//this isportal in ract..
